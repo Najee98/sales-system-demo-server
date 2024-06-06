@@ -1,6 +1,7 @@
 package com.storage.storagedemo.Models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.storage.storagedemo.Models.JoinTableEntities.SaleProduct;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,7 +35,7 @@ public class Product {
 //    @ManyToMany(mappedBy = "products")
 //    List<Sale> sale = new ArrayList<>();
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SaleProduct> saleProducts = new ArrayList<>();
 }
